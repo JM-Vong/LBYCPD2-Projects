@@ -1,3 +1,21 @@
+// This is the revised version of my plagiarism checker program. It is better than the previous version as it now uses 
+// a line checking algorithm rather than a letter based one. The program would check each 
+// line in the first file and it would check whether or not the same line is present anywhere in the second file. 
+
+// The program is also capable of calling files from a directory so that multiple files can be checked at once.
+
+// I would also like to add that on 
+
+// line 25: if (i == 16){
+
+// and on 
+
+// line 29: if (j == 16){
+
+// are lines of code to make sure that the .exe or executable file which normally comes up after running a 
+// Dev C++ file would be excluded in the checking. The number 16 is the exact placement of where 
+// the executable file will be in the directory and it is specifically set to the specification of my directory.
+
 #include <iostream>
 #include <string.h>
 #include <dirent.h>
