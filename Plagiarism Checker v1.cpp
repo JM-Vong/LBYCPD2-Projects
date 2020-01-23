@@ -1,3 +1,10 @@
+// This is the initial version of my plagiarism checker program. 
+// The method or algorithm that i used is to check whether a source code 
+// was directly copy pasted from another code. Which means that each letter 
+// in the first file would be in the exact same position in the second file. 
+
+// I realize this approach is extremely flawed; therefore, I would be revising the program.
+
 #include <iostream>
 #include <string.h>
 
