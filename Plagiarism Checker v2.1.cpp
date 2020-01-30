@@ -2,6 +2,17 @@
 #include <string.h>
 #include <dirent.h>
 
+//This is the updated version of the Plagiarism Checker v2
+//The changes here include the fix for the trapping for my .exe file
+//Instead of having the exact file numbering in the list be hard coded, the file name instead will be used and be skipped over
+//If the code should read the said name like in Line 60.
+
+//The code also is arranged more neatly where the names of the code owners are seen in the left side of the screen.
+
+//Furthermore, the comparison and printing part of the code has been turned into a function instead of having everything cluttered into
+//The main() function.
+
+
 using namespace std;
 
 double comparison(string con1[], string con2[]){
