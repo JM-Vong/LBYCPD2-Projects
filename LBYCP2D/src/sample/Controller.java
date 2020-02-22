@@ -11,12 +11,18 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Controller {
 
     String directory = new String("");
 
     TakeFilesFromProject getfiles = new TakeFilesFromProject("");
+
+    private ArrayList<File> prelim = new ArrayList<File>();
+    private ArrayList<ArrayList<File>> foldername = new ArrayList<ArrayList<File>>();
+    private ArrayList<File> folderfiles = new ArrayList<File>();
+    int count = 0;
 
     @FXML
     private TextField textbox;
@@ -52,24 +58,37 @@ public class Controller {
 
         File file = new File(directory);
         ArrayList<File> FileNames = getfiles.getFiles();
+        ArrayList<File> FolderNames = getfiles.getFolders();
+
+        listFiles(file);
+
         AlgorithmClass test = new AlgorithmClass();
 
-        for (int i =0; i < FileNames.size(); i++){
-            System.out.format("%15s ",FileNames.get(i).getName());
-            matrixdisplay.add(new Label(FileNames.get(i).getName()),0,i+1);
-            matrixdisplay.add(new Label(FileNames.get(i).getName()),i+1,0);
+        for (int i =0; i < FolderNames.size(); i++){
+            matrixdisplay.add(new Label(FolderNames.get(i).getName()),0,i+1);
+            matrixdisplay.add(new Label(FolderNames.get(i).getName()),i+1,0);
         }
 
-        System.out.print("\n");
-
-        for (int i = 0; i < FileNames.size(); i++){
-            System.out.format("%16s", FileNames.get(i).getName());
-            for (int j = 0; j < FileNames.size(); j++){
-                System.out.format("%16.2f" ,test.comparison(FileNames,i,j));
+        for (int i = 0; i < FolderNames.size(); i++){
+            for (int j = 0; j < FolderNames.size(); j++){
                 DecimalFormat df = new DecimalFormat("0.00");
-                matrixdisplay.add(new Label(String.valueOf(df.format((test.comparison(FileNames, i, j))))),i+1,j+1);
+                matrixdisplay.add(new Label(String.valueOf(df.format((test.takeStrings(FolderNames,i,j))))),i+1,j+1);
             }
-            System.out.print("\n");
+        }
+    }
+
+    private void listFiles(File folder) {
+        //this is will add file in the prelimFiles
+
+
+        for ( File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                listFiles(fileEntry);
+                folderfiles.add(fileEntry);
+                //System.out.println(fileEntry.getName());
+            } else {
+                prelim.add(fileEntry);
+            }
         }
     }
 }
