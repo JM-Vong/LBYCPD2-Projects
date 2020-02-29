@@ -6,8 +6,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import javafx.scene.control.Label;
 
-class HalsteadComplexity
+public class HalsteadComplexity
 {
     public static ArrayList<String> reorderVariables(ArrayList<String> variables)
     {
@@ -78,7 +79,7 @@ class HalsteadComplexity
         }
         return uniqueList;
     }
-    public static void displayMetrics(int N1,int N2,int n1,int n2)
+    public static void displayMetrics(int N1,int N2,int n1,int n2, Label x, Label y, Label z)
     {
         int N,n;
         float V,D,L,E,T,B;
@@ -93,18 +94,21 @@ class HalsteadComplexity
         B = (float)(Math.pow(E, 2/3)/3000);
 
         System.out.println("\t[N] Program Length      : "+N);
+        x.setText(String.valueOf(N));
         System.out.println("\t[n] Vocabulary Size     : "+n);
+        y.setText(String.valueOf(n));
         System.out.println("\t[V] Program Volume      : "+V);
-        System.out.println("\t[D] Difficulty          : "+D);
-        System.out.println("\t[K] Program Level       : "+L);
-        System.out.println("\t[E] Effort to implement : "+E);
-        System.out.print("\t[T] Time to implement   : ");
-        System.out.format("%-10.5f%n", T);
-        System.out.print("\t[B] # of delivered bugs : ");
-        System.out.format("%-10.5f%n\n", B);
+        z.setText(String.valueOf(V));
+//        System.out.println("\t[D] Difficulty          : "+D);
+//        System.out.println("\t[K] Program Level       : "+L);
+//        System.out.println("\t[E] Effort to implement : "+E);
+//        System.out.print("\t[T] Time to implement   : ");
+//        System.out.format("%-10.5f%n", T);
+//        System.out.print("\t[B] # of delivered bugs : ");
+//        System.out.format("%-10.5f%n\n", B);
 
     }
-    public static void main(String[] args)
+    public static void main(Label x, Label y, Label z)
     {
         try
         {
@@ -211,24 +215,25 @@ class HalsteadComplexity
                 // checking for constants
                 operands.addAll(extractConstants(line));
             }
-            System.out.println("Operators identified : ");
-            for(String o : operators)
-                System.out.println("\t"+o);
-            System.out.println("Operands identified : ");
-            for(String o : operands)
-                System.out.println("\t"+o);
-            System.out.println("Variables identified : ");
-            for(String v : variables)
-                System.out.println("\t"+v);
-            System.out.println("Number of operators (N1) " + operators.size());
-            System.out.println("Number of operands  (N2) " + operands.size());
+//            System.out.println("Operators identified : ");
+//            for(String o : operators)
+//                System.out.println("\t"+o);
+//            System.out.println("Operands identified : ");
+//            for(String o : operands)
+//                System.out.println("\t"+o);
+//            System.out.println("Variables identified : ");
+//            for(String v : variables)
+//                System.out.println("\t"+v);
+//            System.out.println("Number of operators (N1) " + operators.size());
+//            System.out.println("Number of operands  (N2) " + operands.size());
 
             Map<String,Integer> uniqueOperators = HalsteadComplexity.getUniqueCount(operators);
             Map<String,Integer> uniqueOperands = HalsteadComplexity.getUniqueCount(operands);
-            System.out.println("Number of unique operators (n1) "+uniqueOperators.size());
-            System.out.println("Number of unique operands (n2) "+uniqueOperands.size());
+//            System.out.println("Number of unique operators (n1) "+uniqueOperators.size());
+//            System.out.println("Number of unique operands (n2) "+uniqueOperands.size());
 
-            displayMetrics(operators.size(),operands.size(),uniqueOperators.size(),uniqueOperands.size());
+            displayMetrics(operators.size(),operands.size(),uniqueOperators.size(),uniqueOperands.size(), x, y, z);
+
             reader.close();
         }
         catch(IOException ioe)

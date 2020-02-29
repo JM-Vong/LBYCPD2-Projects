@@ -24,7 +24,7 @@
             <TextField fx:id="textbox" layoutX="47.0" layoutY="91.0" prefHeight="26.0" prefWidth="299.0" />
             <Label fx:id="text1" layoutX="47.0" layoutY="63.0" text="Browse Directory" />
             <Button fx:id="display" layoutX="46.0" layoutY="179.0" mnemonicParsing="false" onAction="#showmatrix" text="Display Matrix" />
-            <ScrollPane layoutX="55.0" layoutY="252.0" prefHeight="518.0" prefWidth="862.0">
+            <ScrollPane layoutX="55.0" layoutY="252.0" prefHeight="415.0" prefWidth="862.0">
                <content>
                   <GridPane fx:id="matrixdisplay" gridLinesVisible="true">
                     <columnConstraints>
@@ -36,6 +36,13 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <Button fx:id="showMetricsBtn" layoutX="186.0" layoutY="179.0" mnemonicParsing="false" onAction="#showmetrics" opacity="0.0" text="Display Metrics" />
+            <Label fx:id="proglen" layoutX="55.0" layoutY="690.0" opacity="0.0" text="Program Length:" />
+            <Label fx:id="vocabsz" layoutX="55.0" layoutY="708.0" opacity="0.0" text="Vocabulary Size:" />
+            <Label fx:id="progvol" layoutX="55.0" layoutY="726.0" opacity="0.0" text="Program Volume:" />
+            <Label fx:id="proglen1" layoutX="172.0" layoutY="690.0" opacity="0.0" text="Label" />
+            <Label fx:id="vocabsz1" layoutX="172.0" layoutY="708.0" opacity="0.0" text="Label" />
+            <Label fx:id="progvol1" layoutX="172.0" layoutY="726.0" opacity="0.0" text="Label" />
          </children>
       </AnchorPane>
    </children>

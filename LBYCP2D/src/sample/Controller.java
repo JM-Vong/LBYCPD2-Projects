@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -34,6 +35,27 @@ public class Controller {
     private GridPane matrixdisplay;
 
     @FXML
+    private Button showMetricsBtn;
+
+    @FXML
+    private Label proglen;
+
+    @FXML
+    private Label vocabsz;
+
+    @FXML
+    private Label progvol;
+
+    @FXML
+    private Label proglen1;
+
+    @FXML
+    private Label vocabsz1;
+
+    @FXML
+    private Label progvol1;
+
+    @FXML
     void browsePressed(ActionEvent event) {
 
         final DirectoryChooser dirchooser = new DirectoryChooser();
@@ -49,6 +71,7 @@ public class Controller {
             directory = file1.getAbsolutePath();
             getfiles = new TakeFilesFromProject(file1.getAbsolutePath());
 
+
         }
 
     }
@@ -63,6 +86,7 @@ public class Controller {
         listFiles(file);
 
         AlgorithmClass test = new AlgorithmClass();
+        showMetricsBtn.setOpacity(1);
 
         for (int i =0; i < FolderNames.size(); i++){
             matrixdisplay.add(new Label(FolderNames.get(i).getName()),0,i+1);
@@ -75,6 +99,23 @@ public class Controller {
                 matrixdisplay.add(new Label(String.valueOf(df.format((test.takeStrings(FolderNames,i,j))))),i+1,j+1);
             }
         }
+    }
+
+    @FXML
+    void showmetrics(ActionEvent event) {
+
+        HalsteadComplexity metrics = new HalsteadComplexity();
+
+        proglen.setOpacity(1);
+        vocabsz.setOpacity(1);
+        progvol.setOpacity(1);
+
+        metrics.main(proglen1, vocabsz1, progvol1);
+        proglen1.setOpacity(1);
+        vocabsz1.setOpacity(1);
+        progvol1.setOpacity(1);
+
+
     }
 
     private void listFiles(File folder) {
